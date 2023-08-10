@@ -1,6 +1,6 @@
 package codeGenerator;
 
-class _3AddressCode {
+public class _3AddressCode {
     public Operation operation;
     public Address Operand1;
     public Address Operand2;
