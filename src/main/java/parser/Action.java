@@ -12,14 +12,9 @@ public class Action {
     }
 
     public String toString() {
-        switch (action) {
-            case accept:
-                return "acc";
-            case shift:
-                return "s" + number;
-            case reduce:
-                return "r" + number;
+        if (action == null) {
+            return action.toString() + number;
         }
-        return action.toString() + number;
+        return action.getStrategy().apply(number);
     }
 }
