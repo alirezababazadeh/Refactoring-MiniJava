@@ -49,10 +49,15 @@ public class SymbolTable {
     }
 
     public void addMethodLocalVariable(String className, String methodName, String localVariableName) {
-        if (klasses.get(className).Methodes.get(methodName).localVariable.containsKey(localVariableName)) {
+        Method method = getMethod(className, methodName);
+        if (method.localVariable.containsKey(localVariableName)) {
             ErrorHandler.printError("This variable already defined");
         }
-        klasses.get(className).Methodes.get(methodName).localVariable.put(localVariableName, new Symbol(lastType, mem.getDateAddress()));
+        method.localVariable.put(localVariableName, new Symbol(lastType, mem.getDateAddress()));
+    }
+
+    private Method getMethod(String className, String methodName) {
+        return klasses.get(className).Methodes.get(methodName);
     }
 
     public void setSuperClass(String superClass, String className) {
