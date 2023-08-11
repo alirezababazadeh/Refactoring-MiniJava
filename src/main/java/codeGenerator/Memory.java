@@ -2,9 +2,6 @@ package codeGenerator;
 
 import java.util.ArrayList;
 
-/**
- * Created by mohammad hosein on 6/27/2015.
- */
 public class Memory {
     private ArrayList<ThreeAddressCode> codeBlock;
     private int lastTempIndex;
