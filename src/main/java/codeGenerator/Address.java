@@ -5,6 +5,10 @@ public class Address {
     public TypeAddress Type;
     public VarType varType;
 
+    public static Address createFromContract(int num, String varType, String type) {
+        return new Address(num, VarType.valueOf(varType), TypeAddress.valueOf(type));
+    }
+
     public Address(int num, VarType varType, TypeAddress Type) {
         this.num = num;
         this.Type = Type;
