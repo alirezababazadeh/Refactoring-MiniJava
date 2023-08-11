@@ -1,5 +1,6 @@
 package parser;
 
+import scanner.ScannerFacade;
 import scanner.token.Token;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class ParseTable {
                     temp = temp;
                 }
             } else {
-                terminals.put(i, new Token(Token.getTyepFormString(cols[i]), cols[i]));
+                terminals.put(i, new Token(new ScannerFacade().getType(cols[i]), cols[i]));
             }
         }
         actionTable = new ArrayList<Map<Token, Action>>();
