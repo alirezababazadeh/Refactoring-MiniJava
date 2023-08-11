@@ -268,12 +268,17 @@ public class CodeGenerator {
         Address s2 = ss.pop();
         Address s1 = ss.pop();
 
-        if (s1.varType != VarType.Int || s2.varType != VarType.Int) {
+        if (isIntegers(s1, s2)) {
             ErrorHandler.printError("In add two operands must be integer");
         }
         memory.add3AddressCode(Operation.ADD, s1, s2, temp);
         ss.push(temp);
     }
+
+    private boolean isIntegers(Address s1, Address s2) {
+        return s1.varType != VarType.Int || s2.varType != VarType.Int;
+    }
+
 
     public void sub() {
         Address temp = new Address(memory.getTemp(), VarType.Int);

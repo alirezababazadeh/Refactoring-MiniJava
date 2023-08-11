@@ -52,14 +52,12 @@ public class Parser {
                     case shift:
                         parsStack.push(currentAction.number);
                         lookAhead = lexicalAnalyzer.getNextToken();
-
                         break;
                     case reduce:
                         Rule rule = rules.get(currentAction.number);
                         for (int i = 0; i < rule.RHS.size(); i++) {
                             parsStack.pop();
                         }
-
                         Log.print(parsStack.peek() + "\t" + rule.LHS);
                         parsStack.push(parseTable.getGotoTable(parsStack.peek(), rule.LHS));
                         Log.print(parsStack.peek() + "");
