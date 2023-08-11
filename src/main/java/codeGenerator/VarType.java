@@ -1,5 +1,5 @@
 package codeGenerator;
 
-public enum varType {
+public enum VarType {
     Int, Bool, Non, Address
 }
