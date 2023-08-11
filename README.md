@@ -1,10 +1,19 @@
- # پروژه MiniJava
+# پروژه MiniJava
  این پروژه با هدف اعمال code refactoring بر روی نسخه اولیه آن برای درس آز مهندسی نرم افزار ایجاد شده است.
 
- ## توضیح موارد بازآرایی اعمال شده
+## توضیح موارد بازآرایی اعمال شده
 <br>
 
- ## سوالات
+- مورد اول Facade:
+- مورد دوم Facade:
+- مورد Strategy/State:
+- مورد Separate Query From Modifier:
+- مورد Extract Method:
+- مورد Remove Assignments to Parameters:
+- مورد Decompose Conditional:
+<br>
+
+## سوالات
 <br>
 
 ### سوال 1:
