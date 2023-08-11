@@ -133,7 +133,6 @@ public class CodeGenerator {
     }
 
     private void defMain() {
-        //ss.pop();
         memory.add3AddressCode(ss.pop().num, Operation.JP, new Address(memory.getCurrentCodeBlockAddress(), VarType.Address), null, null);
         String methodName = "main";
         String className = symbolStack.pop();
@@ -171,16 +170,7 @@ public class CodeGenerator {
     }
 
     private void push(Symbol s) {
-        VarType t = VarType.Int;
-        switch (s.type) {
-            case Bool:
-                t = VarType.Bool;
-                break;
-            case Int:
-                t = VarType.Int;
-                break;
-        }
-        ss.push(new Address(s.address, t));
+        ss.push(new Address(s.address, findType(s)));
     }
 
     public void fpid() {
@@ -240,15 +230,7 @@ public class CodeGenerator {
         String methodName = callStack.pop();
         try {
             Symbol s = symbolTable.getNextParam(callStack.peek(), methodName);
-            VarType t = VarType.Int;
-            switch (s.type) {
-                case Bool:
-                    t = VarType.Bool;
-                    break;
-                case Int:
-                    t = VarType.Int;
-                    break;
-            }
+            VarType t = findType(s);
             Address param = ss.pop();
             if (param.varType != t) {
                 ErrorHandler.printError("The argument type isn't match");
@@ -259,6 +241,17 @@ public class CodeGenerator {
         }
         callStack.push(methodName);
 
+    }
+
+    private VarType findType(Symbol s) {
+        switch (s.type) {
+            case Bool:
+                return VarType.Bool;
+            case Int:
+                return VarType.Int;
+            default:
+                return null;
+        }
     }
 
     public void assign() {
